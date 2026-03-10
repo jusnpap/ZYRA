@@ -1,0 +1,12 @@
+name = "willyshop"
+compatibility_dname = "zyrashop"
+main = "src/index.js"
+compatibility_date = "2023-12-01"
+
+[assets]
+directory = "./public"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "zyra-store-db"
+database_id = "b8bd8fb8-eaee-40c6-92ed-d0fc1b0ac1c3"
