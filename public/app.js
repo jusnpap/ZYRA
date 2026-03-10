@@ -1262,7 +1262,55 @@ document.addEventListener('DOMContentLoaded', () => {
             header.classList.remove('scrolled');
         }
     });
+
+    // Chatbot listeners
+    document.getElementById('chatbot-float').onclick = () => {
+        document.getElementById('chatbot-window').classList.toggle('active');
+    };
+    document.getElementById('close-chatbot').onclick = () => {
+        document.getElementById('chatbot-window').classList.remove('active');
+    };
+    document.getElementById('send-chat').onclick = sendChatMessage;
+    document.getElementById('chat-input').onkeypress = (e) => {
+        if (e.key === 'Enter') sendChatMessage();
+    };
 });
+
+async function sendChatMessage() {
+    const input = document.getElementById('chat-input');
+    const msg = input.value.trim();
+    if (!msg) return;
+
+    appendChatMessage('user', msg);
+    input.value = '';
+
+    const container = document.getElementById('chatbot-messages');
+    const loadingMsg = document.createElement('div');
+    loadingMsg.className = 'chat-msg bot';
+    loadingMsg.innerText = 'ZYRA está pensando...';
+    container.appendChild(loadingMsg);
+    container.scrollTop = container.scrollHeight;
+
+    try {
+        const data = await API.post('/chat', {
+            messages: [{ role: 'user', content: msg }]
+        });
+        container.removeChild(loadingMsg);
+        appendChatMessage('bot', data.response);
+    } catch (e) {
+        if (loadingMsg.parentNode) container.removeChild(loadingMsg);
+        appendChatMessage('bot', 'Lo siento, tuve un problema al conectar. ¿Puedes intentar de nuevo?');
+    }
+}
+
+function appendChatMessage(role, text) {
+    const container = document.getElementById('chatbot-messages');
+    const div = document.createElement('div');
+    div.className = `chat-msg ${role}`;
+    div.innerText = text;
+    container.appendChild(div);
+    container.scrollTop = container.scrollHeight;
+}
 
 // Exposed globally for onclicks
 window.updateCartQty = updateCartQty;

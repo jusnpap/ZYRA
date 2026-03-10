@@ -651,19 +651,10 @@ header.scrolled {
 }
 
 @keyframes luxuriousEntrance {
-    0% {
-        opacity: 0;
-        letter-spacing: 20px;
-        transform: translateY(30px);
-        filter: blur(10px);
-    }
-
-    100% {
-        opacity: 1;
-        letter-spacing: 2px;
-        transform: translateY(0);
-        filter: blur(0);
-    }
+    letter-spacing: 2px;
+    transform: translateY(0);
+    filter: blur(0);
+}
 }
 
 .category-card {

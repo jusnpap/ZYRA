@@ -98,6 +98,11 @@ export default {
                 response = await withAdmin(request, env, handleUpdateAjustes);
             }
 
+            // ---- CHAT AI ----
+            else if (path === '/api/chat' && request.method === 'POST') {
+                response = await handleChat(request, env);
+            }
+
             else {
                 response = json({ error: 'Ruta no encontrada' }, 404);
             }
@@ -128,7 +133,7 @@ function json(data, status = 200) {
 function createToken(payload) {
     const header = btoa(JSON.stringify({ alg: 'HS256', typ: 'JWT' }));
     const body = btoa(JSON.stringify({ ...payload, exp: Date.now() + 7 * 24 * 60 * 60 * 1000 }));
-    const sig = btoa(JSON.stringify({ v: 'willy_secret_' + payload.id }));
+    const sig = btoa(JSON.stringify({ v: 'zyra_secret_' + payload.id }));
     return `${header}.${body}.${sig}`;
 }
 
@@ -630,4 +635,40 @@ async function handleUpdateAjustes(request, env) {
             .bind(clave, valor).run();
     }
     return json({ message: 'Ajustes actualizados' });
+}
+
+// ---- AI CHAT ----
+async function handleChat(request, env) {
+    if (!env.AI) return json({ error: 'AI no configurado en este worker' }, 500);
+
+    const { messages } = await request.json();
+    if (!messages || !Array.isArray(messages)) return json({ error: 'Mensajes requeridos' }, 400);
+
+    // Get product context
+    const { results: prods } = await env.DB.prepare('SELECT nombre, descripcion, precio FROM productos WHERE estado = \'activo\'').all();
+    const context = prods.map(p => `- ${p.nombre}: ${p.descripcion} (Precio: $${p.precio})`).join('\n');
+
+    const systemPrompt = `Eres ZYRA AI, una experta asesora de belleza y maquillaje para la tienda ZYRA SHOP. 
+Tu objetivo es ayudar a las clientas a elegir los mejores productos según su piel e intereses.
+Aquí tienes el catálogo actual de productos de la tienda:
+${context}
+
+Instrucciones:
+1. Sé amable, elegante y profesional.
+2. Recomienda productos específicos del catálogo anterior cuando sea posible.
+3. Si preguntan por tonos de piel (piel morena, piel clara, etc.), sugiere bases o correctores del catálogo que encajen mejor.
+4. Responde en español de forma concisa.`;
+
+    try {
+        const aiResponse = await env.AI.run('@cf/meta/llama-3-8b-instruct', {
+            messages: [
+                { role: 'system', content: systemPrompt },
+                ...messages
+            ]
+        });
+
+        return json({ response: aiResponse.response || aiResponse.text });
+    } catch (e) {
+        return json({ error: 'Error en AI', details: e.message }, 500);
+    }
 }
