@@ -1,4 +1,4 @@
-name = "willyshop"
+name = "zyra"
 compatibility_dname = "zyrashop"
 main = "src/index.js"
 compatibility_date = "2023-12-01"
