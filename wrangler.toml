@@ -8,5 +8,5 @@ directory = "./public"
 
 [[d1_databases]]
 binding = "DB"
-database_name = "zyra-store-db"
-database_id = "b8bd8fb8-eaee-40c6-92ed-d0fc1b0ac1c3"
+database_name = "zyra"
+database_id = "541b9b3d-0763-4eda-bb61-51c31b2d1d5e"
