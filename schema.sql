@@ -119,25 +119,24 @@ CREATE TABLE pedido_items (
 -- DATOS INICIALES (SEED DATA)
 -- =============================================
 
--- Categorías con fotos reales (Unsplash)
+-- Categorías con fotos premium (Pexels/Unsplash)
 INSERT INTO categorias (id, nombre, imagen_url) VALUES 
-(1, 'Rostro', 'https://images.unsplash.com/photo-1596704017254-9b12106fc19a?q=80&w=2070'),
-(2, 'Ojos', 'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&w=2070'),
-(3, 'Labios', 'https://images.unsplash.com/photo-1586776193466-91edd2267b1c?q=80&w=2069'),
-(4, 'Skincare', 'https://images.unsplash.com/photo-1556228515-ce4a913f423b?q=80&w=2070');
+(1, 'Rostro', 'https://images.pexels.com/photos/3373739/pexels-photo-3373739.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
+(2, 'Ojos', 'https://images.pexels.com/photos/3018845/pexels-photo-3018845.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
+(3, 'Labios', 'https://images.pexels.com/photos/2533266/pexels-photo-2533266.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
+(4, 'Skincare', 'https://images.pexels.com/photos/3618606/pexels-photo-3618606.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
 
 -- Usuario Admin (password: admin123)
--- Hash corregido para el worker: h_g10hvh
 INSERT INTO usuarios (id, nombre, email, password_hash, rol) VALUES 
 (1, 'Admin Zyra', 'admin@zyra.com', 'h_g10hvh', 'admin');
 
 -- Productos (Maquillaje y Belleza)
 INSERT INTO productos (id, nombre, descripcion, precio, precio_oferta, categoria_id, imagen_url, genero, destacado, nuevo) VALUES
-(1, 'Labial Matte SuperStay', 'Labial de larga duración, acabado mate aterciopelado. Color intenso que no se transfiere.', 15.00, 12.00, 3, 'https://images.unsplash.com/photo-1586776193466-91edd2267b1c?q=80&w=2069', 'unisex', 1, 1),
-(2, 'Base de Maquillaje Fit Me', 'Base fluida que se adapta a tu tono de piel. Acabado natural y control de brillo.', 22.00, 18.00, 1, 'https://images.unsplash.com/photo-1596704017254-9b12106fc19a?q=80&w=2070', 'unisex', 1, 1),
-(3, 'Máscara de Pestañas Lash Sensational', 'Efecto abanico para unas pestañas largas y voluminosas. Negro intenso.', 12.00, NULL, 2, 'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&w=2070', 'unisex', 1, 0),
-(4, 'Serum Hidratante Pro-Glow', 'Skincare esencial con ácido hialurónico para una piel radiante y saludable.', 35.00, 30.00, 4, 'https://images.unsplash.com/photo-1556228515-ce4a913f423b?q=80&w=2070', 'unisex', 1, 1),
-(5, 'Paleta de Sombras Nude Edition', '12 tonos altamente pigmentados entre mates y brillantes para un look versátil.', 28.00, NULL, 2, 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=2087', 'unisex', 0, 1);
+(1, 'Labial Matte SuperStay', 'Labial de larga duración, acabado mate aterciopelado. Color intenso que no se transfiere.', 15.00, 12.00, 3, 'https://images.pexels.com/photos/2533266/pexels-photo-2533266.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', 'unisex', 1, 1),
+(2, 'Base de Maquillaje Fit Me', 'Base fluida que se adapta a tu tono de piel. Acabado natural y control de brillo.', 22.00, 18.00, 1, 'https://images.pexels.com/photos/3373739/pexels-photo-3373739.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', 'unisex', 1, 1),
+(3, 'Máscara de Pestañas Lash Sensational', 'Efecto abanico para unas pestañas largas y voluminosas. Negro intenso.', 12.00, NULL, 2, 'https://images.pexels.com/photos/3018845/pexels-photo-3018845.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', 'unisex', 1, 0),
+(4, 'Serum Hidratante Pro-Glow', 'Skincare esencial con ácido hialurónico para una piel radiante y saludable.', 35.00, 30.00, 4, 'https://images.pexels.com/photos/3618606/pexels-photo-3618606.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', 'unisex', 1, 1),
+(5, 'Paleta de Sombras Nude Edition', '12 tonos altamente pigmentados entre mates y brillantes para un look versátil.', 28.00, NULL, 2, 'https://images.pexels.com/photos/2443006/pexels-photo-2443006.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', 'unisex', 0, 1);
 
 -- Tallas (Para maquillaje usamos Tonos o 'Única')
 INSERT INTO tallas (producto_id, nombre, stock) VALUES

@@ -16,12 +16,27 @@
 <body>
     <div id="app">
         <!-- Header -->
+        <!-- Header -->
         <header id="main-header">
-            <a href="#/" class="logo">
-                <span
-                    style="font-size: 26px; font-weight: 800; letter-spacing: 4px; text-transform: uppercase;">ZYRA<span
-                        style="color: var(--accent);">SHOP</span></span>
-            </a>
+            <div class="header-top">
+                <div class="nav-actions left">
+                    <div class="search-btn nav-icon"><i class="fas fa-search"></i></div>
+                </div>
+
+                <a href="#/" class="logo">
+                    <span
+                        style="font-size: 32px; font-weight: 900; letter-spacing: 6px; text-transform: uppercase;">ZYRA<span
+                            style="color: var(--accent);">SHOP</span></span>
+                </a>
+
+                <div class="nav-actions right">
+                    <div class="user-btn nav-icon" id="user-btn"><i class="far fa-user"></i></div>
+                    <div class="cart-btn nav-icon" id="cart-btn">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span class="cart-count" id="cart-count">0</span>
+                    </div>
+                </div>
+            </div>
 
             <nav class="nav-main">
                 <a href="#/" class="nav-link">Inicio</a>
@@ -29,16 +44,8 @@
                 <a href="#/catalogo?categoria=2" class="nav-link">Ojos</a>
                 <a href="#/catalogo?categoria=3" class="nav-link">Labios</a>
                 <a href="#/catalogo?categoria=4" class="nav-link">Skincare</a>
+                <a href="#/nosotros" class="nav-link">Nosotros</a>
             </nav>
-
-            <div class="nav-actions">
-                <div class="search-btn nav-icon"><i class="fas fa-search"></i></div>
-                <div class="user-btn nav-icon" id="user-btn"><i class="far fa-user"></i></div>
-                <div class="cart-btn nav-icon" id="cart-btn">
-                    <i class="fas fa-shopping-bag"></i>
-                    <span class="cart-count" id="cart-count">0</span>
-                </div>
-            </div>
         </header>
 
         <!-- Main Content -->
