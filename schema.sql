@@ -131,24 +131,26 @@ INSERT INTO categorias (id, nombre, imagen_url) VALUES
 INSERT INTO usuarios (id, nombre, email, password_hash, rol) VALUES 
 (1, 'Admin Zyra', 'admin@zyra.com', 'h_g10hvh', 'admin');
 
--- Productos (Ropa de tus fotos)
+-- Productos (Maquillaje y Belleza)
 INSERT INTO productos (id, nombre, descripcion, precio, precio_oferta, categoria_id, imagen_url, genero, destacado, nuevo) VALUES
-(1, 'Sudadera Urban Black Patterns', 'Sudadera negra premium con patrones artísticos en las mangas. Corte moderno.', 45.00, NULL, 1, 'assets/p1.png', 'unisex', 1, 1),
-(2, 'Conjunto Tracksuit Royal Blue', 'Conjunto deportivo azul y beige. Estilo color-block de alta gama.', 85.00, 75.00, 2, 'assets/p4.png', 'unisex', 1, 1),
-(3, 'Sweater Forest Green Premium', 'Sweater verde bosque con detalles en blanco. Elegancia minimalista.', 35.00, NULL, 3, 'assets/p2.png', 'mujer', 0, 1),
-(4, 'Chaqueta Bomber Midnight Sport', 'Chaqueta bomber negra con ribetes blancos. Estilo varsity urbano.', 65.00, NULL, 4, 'assets/p3.png', 'unisex', 1, 0);
+(1, 'Labial Matte SuperStay', 'Labial de larga duración, acabado mate aterciopelado. Color intenso que no se transfiere.', 15.00, 12.00, 3, 'https://images.unsplash.com/photo-1586776193466-91edd2267b1c?q=80&w=2069', 'unisex', 1, 1),
+(2, 'Base de Maquillaje Fit Me', 'Base fluida que se adapta a tu tono de piel. Acabado natural y control de brillo.', 22.00, 18.00, 1, 'https://images.unsplash.com/photo-1596704017254-9b12106fc19a?q=80&w=2070', 'unisex', 1, 1),
+(3, 'Máscara de Pestañas Lash Sensational', 'Efecto abanico para unas pestañas largas y voluminosas. Negro intenso.', 12.00, NULL, 2, 'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&w=2070', 'unisex', 1, 0),
+(4, 'Serum Hidratante Pro-Glow', 'Skincare esencial con ácido hialurónico para una piel radiante y saludable.', 35.00, 30.00, 4, 'https://images.unsplash.com/photo-1556228515-ce4a913f423b?q=80&w=2070', 'unisex', 1, 1),
+(5, 'Paleta de Sombras Nude Edition', '12 tonos altamente pigmentados entre mates y brillantes para un look versátil.', 28.00, NULL, 2, 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=2087', 'unisex', 0, 1);
 
--- Tallas
+-- Tallas (Para maquillaje usamos Tonos o 'Única')
 INSERT INTO tallas (producto_id, nombre, stock) VALUES
-(1, 'S', 10), (1, 'M', 15), (1, 'L', 10),
-(2, 'S', 8), (2, 'M', 12), (2, 'L', 8),
-(3, 'S', 12), (3, 'M', 20), (3, 'L', 10),
-(4, 'M', 15), (4, 'L', 15), (4, 'XL', 5);
+(1, 'Nude', 20), (1, 'Red', 20), (1, 'Pink', 15),
+(2, '110 Porcelana', 10), (2, '220 Natural', 10), (2, '330 Toffee', 10),
+(3, 'Negro', 50),
+(4, 'Única', 30),
+(5, 'Única', 25);
 
--- Colores
+-- Colores (Mapeo de tonos para selección visual)
 INSERT INTO colores (producto_id, nombre, hex_code) VALUES
-(1, 'Negro', '#000000'), (2, 'Multicolor', '#0026ff'), (3, 'Verde', '#2d5a27'), (4, 'Negro', '#1a1a1a');
+(1, 'Nude Oasis', '#d2b48c'), (1, 'Ruby Red', '#9b111e'), (2, 'Light', '#f5e1d2'), (2, 'Medium', '#d2b48c');
 
 -- Ajustes iniciales
 INSERT INTO ajustes (clave, valor) VALUES 
-('quienes_somos', 'Willy Shop es tu destino definitivo para la moda urbana y premium. Fundada en 2026, nos dedicamos a ofrecer piezas exclusivas que combinan arte, comodidad y estilo. Cada prenda es seleccionada cuidadosamente para asegurar la máxima calidad y un diseño vanguardista.');
+('quienes_somos', 'ZYRA-SHOP es tu destino premium de belleza y empoderamiento. Inspiradas por la elegancia y la sofisticación, ofrecemos productos de alta gama que resaltan tu belleza natural. Fundada en 2026, nuestra misión es brindar asesoría personalizada y productos de calidad excepcional para cada tipo de piel.');

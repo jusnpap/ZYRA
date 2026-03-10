@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WILLY STORE | Colección Oficial</title>
+    <title>ZYRA-SHOP | Belleza & Maquillaje</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,34 +16,27 @@
 <body>
     <div id="app">
         <!-- Header -->
-        <header id="main-header">
-            <div class="nav-toggle" id="menu-toggle">
-                <i class="fas fa-bars"></i>
+        <a href="#/" class="logo">
+            <span style="font-size: 26px; font-weight: 800; letter-spacing: 4px; text-transform: uppercase;">ZYRA<span
+                    style="color: var(--accent);">SHOP</span></span>
+        </a>
+
+        <nav class="nav-main">
+            <a href="#/" class="nav-link">Inicio</a>
+            <a href="#/catalogo?categoria=1" class="nav-link">Rostro</a>
+            <a href="#/catalogo?categoria=2" class="nav-link">Ojos</a>
+            <a href="#/catalogo?categoria=3" class="nav-link">Labios</a>
+            <a href="#/catalogo?categoria=4" class="nav-link">Skincare</a>
+        </nav>
+
+        <div class="nav-actions">
+            <div class="search-btn nav-icon"><i class="fas fa-search"></i></div>
+            <div class="user-btn nav-icon" id="user-btn"><i class="far fa-user"></i></div>
+            <div class="cart-btn nav-icon" id="cart-btn">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="cart-count" id="cart-count">0</span>
             </div>
-
-            <div id="menu-toggle" style="cursor: pointer;"><i class="fas fa-bars"></i> INICIO</div>
-
-            <nav class="container nav-main">
-                <a href="#/" class="nav-link">Inicio</a>
-                <a href="#/catalogo?genero=mujer" class="nav-link">Mujer</a>
-                <a href="#/catalogo?genero=hombre" class="nav-link">Hombre</a>
-                <a href="#/catalogo?nuevo=1" class="nav-link">Novedades</a>
-                <a href="#/nosotros" class="nav-link">Nosotros</a>
-            </nav>
-
-            <a href="#/" class="logo">
-                <span
-                    style="font-size: 24px; font-weight: 800; letter-spacing: 5px; text-transform: uppercase;">Zyra</span>
-            </a>
-
-            <div class="nav-actions">
-                <div class="search-btn nav-icon"><i class="fas fa-search"></i></div>
-                <div class="user-btn nav-icon" id="user-btn"><i class="far fa-user"></i></div>
-                <div class="cart-btn nav-icon" id="cart-btn">
-                    <i class="fas fa-shopping-bag"></i>
-                    <span class="cart-count" id="cart-count">0</span>
-                </div>
-            </div>
+        </div>
         </header>
 
         <!-- Main Content -->
